@@ -10,7 +10,12 @@ global with sharing class RESTCommandCenter implements Callable {
         'openOpps' => 'Retrieves open opportunities.'
     };
 
-
+    @HttpGet
+    global static void listCommands() {
+        RestResponse resp = RestContext.response;
+        resp.statusCode = 200;
+        resp.responseBody = Blob.valueOf(JSON.serialize(commandListing));   
+    }
     
     @HttpPost
     global static void runCommand() {
