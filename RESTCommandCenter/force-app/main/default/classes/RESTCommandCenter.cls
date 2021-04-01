@@ -1,9 +1,9 @@
 @RestResource(urlMapping='/CommandCenter/*')
 global with sharing class RESTCommandCenter implements Callable {
+
     /**
      * List of Commands with their function endpoints
      */
-
     private static Map<String, String> commandListing = new Map<String, String> {
         'dailyAcctUpdate' => 'Performs daily updates of new accounts.',
         'clearInactives' => 'Deletes inactive accounts',
@@ -70,10 +70,7 @@ global with sharing class RESTCommandCenter implements Callable {
                 throw new RESTCommandCenterException('Command provides was not callable.');
             }
         }
-
     }
 
-    public class RESTCommandCenterException extends Exception {
-
-    }
+    public class RESTCommandCenterException extends Exception {}
 }
